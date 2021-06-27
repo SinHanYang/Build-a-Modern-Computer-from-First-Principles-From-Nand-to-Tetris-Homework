@@ -1,0 +1,69 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Mux16.hdl
+
+/**
+ * 16-bit multiplexor: 
+ * for i = 0..15 out[i] = a[i] if sel == 0 
+ *                        b[i] if sel == 1
+ */
+
+CHIP Mux16 {
+    IN a[16], b[16], sel;
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+ Not(in=sel,out=nots);
+And(a=a[1],b=nots,out=and11);
+And(a=a[0],b=nots,out=and10);
+And(a=a[2],b=nots,out=and12);
+And(a=a[3],b=nots,out=and13);
+And(a=a[4],b=nots,out=and14);
+And(a=a[5],b=nots,out=and15);
+And(a=a[6],b=nots,out=and16);
+And(a=a[7],b=nots,out=and17);
+And(a=a[8],b=nots,out=and18);
+And(a=a[9],b=nots,out=and19);
+And(a=a[10],b=nots,out=and110);
+And(a=a[11],b=nots,out=and111);
+And(a=a[12],b=nots,out=and112);
+And(a=a[13],b=nots,out=and113);
+And(a=a[14],b=nots,out=and114);
+And(a=a[15],b=nots,out=and115);
+And(a=b[1],b=sel,out=and21);
+And(a=b[2],b=sel,out=and22);
+And(a=b[3],b=sel,out=and23);
+And(a=b[4],b=sel,out=and24);
+And(a=b[5],b=sel,out=and25);
+And(a=b[6],b=sel,out=and26);
+And(a=b[7],b=sel,out=and27);
+And(a=b[8],b=sel,out=and28);
+And(a=b[9],b=sel,out=and29);
+And(a=b[10],b=sel,out=and210);
+And(a=b[11],b=sel,out=and211);
+And(a=b[12],b=sel,out=and212);
+And(a=b[13],b=sel,out=and213);
+And(a=b[14],b=sel,out=and214);
+And(a=b[15],b=sel,out=and215);
+And(a=b[0],b=sel,out=and20);
+
+    Or(a=and11,b=and21,out=out[1]);
+Or(a=and12,b=and22,out=out[2]);
+Or(a=and13,b=and23,out=out[3]);
+Or(a=and14,b=and24,out=out[4]);
+Or(a=and15,b=and25,out=out[5]);
+Or(a=and16,b=and26,out=out[6]);
+Or(a=and17,b=and27,out=out[7]);
+Or(a=and18,b=and28,out=out[8]);
+Or(a=and19,b=and29,out=out[9]);
+Or(a=and110,b=and210,out=out[10]);
+Or(a=and111,b=and211,out=out[11]);
+Or(a=and112,b=and212,out=out[12]);
+Or(a=and113,b=and213,out=out[13]);
+Or(a=and114,b=and214,out=out[14]);
+Or(a=and115,b=and215,out=out[15]);
+Or(a=and10,b=and20,out=out[0]);
+
+}
